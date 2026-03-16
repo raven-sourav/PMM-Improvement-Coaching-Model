@@ -1,41 +1,61 @@
-# Master Reviewer
+# PMM Improvement & Coaching Model
 
-An AI-powered coaching tool for Product Marketing Managers. Clone this repo, open it with [Claude Code](https://claude.ai/claude-code), and start reviewing PMM work objectively.
+> A self-improving coaching system that scores PMM work across 29 dimensions, tracks growth across campaigns, and fixes itself — built entirely with Claude Code and markdown.
 
-**No APIs. No setup. No dependencies.** Just Claude Code + markdown files.
+**No APIs. No databases. No setup.** Clone → open with Claude Code → start reviewing.
+
+[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-blueviolet)](https://claude.ai/claude-code)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
-## The Problem
+## Why This Exists
 
-Managers review PMM work constantly — messaging docs, launch briefs, blog posts, case studies. But feedback is inconsistent, subjective, and hard to track over time. Did the PMM actually improve? Which skills are stuck? Is coaching working? Come appraisal season, the evidence is anecdotal.
+PMM feedback has three structural failures:
 
-Master Reviewer fixes this by scoring every document iteration across 29 dimensions, tracking whether feedback gets applied, and measuring growth across campaigns over months.
+1. **Unscored** — "The positioning needs tightening" compared to what? No rubric, no baseline, no shared definition of quality.
+2. **Untracked** — Every review is a clean slate. The same CTA note shows up across three campaigns and nobody notices.
+3. **Unprioritized** — Eight comments, all weighted equally. The PMM fixes the easy ones and skips the rest.
+
+The result: growth happens invisibly, and when promotion season arrives, the evidence is anecdotal.
+
+This system fixes all three.
+
+---
+
+## Visual Dashboard
+
+The system generates a self-contained HTML dashboard — no server, no dependencies. Open in any browser.
+
+### Team Dashboard
+> Team-level stats, progress cards per PMM with score rings, skill category breakdowns, and recent review activity.
+
+📄 **[View Team Dashboard →](dashboard/index.html)** *(download and open in browser)*
+
+### Product Brief
+> A one-page overview of how the system works — dimensions, scoring, Focus 3, and tracking.
+
+📄 **[View Product Brief →](brief.html)** *(download and open in browser)*
+
+---
 
 ## What It Does
 
-- **Scores document iterations** across **29 dimensions in 5 categories** — from strategic positioning to sentence-level copywriting craft
-- **Surfaces only 3 priorities per review** (the "Focus 3") — ranked by effort vs. impact, because humans can't absorb 29 things at once
-- **Shows exactly what better looks like** — every feedback note rewrites the PMM's own text, not abstract advice
-- **Tracks campaigns end-to-end** — multiple iterations within a project (Draft 1→2→3→Final)
-- **Measures feedback retention** — did the PMM actually address the coaching notes from last iteration?
-- **Tracks cross-campaign growth** — are initial draft scores improving over time? (the real signal of internalized learning)
-- **Generates reports** for coaching, appraisals, and promotion cases
+### 29 Dimensions Across 5 Categories
 
----
+Every piece of PMM work is scored across component skills — not collapsed into "needs work."
 
-## How It Works
+| Category | Dimensions | What It Covers |
+|----------|-----------|----------------|
+| **A. Strategic Foundation** | 6 | Messaging clarity, value prop, audience targeting, competitive positioning, CTA effectiveness, evidence usage |
+| **B. Copywriting Craft** | 10 | Headline strength, word economy, specificity, sentence rhythm, repetition, power language, vivid language, emotional resonance, opening/closing, readability |
+| **C. Structure & Logic** | 4 | Information hierarchy, argument structure, transitions, scannability |
+| **D. Persuasion & Conversion** | 5 | Social proof, benefit/feature ratio, objection handling, urgency/trust, technical simplification |
+| **E. Brand & Voice** | 4 | Tone consistency, brand distinctiveness, confidence calibration, jargon appropriateness |
 
-### The Review Process
+**17 Core** dimensions are always scored. **12 Contextual** dimensions activate based on document type.
 
-1. **PMM submits two versions** of a document — the initial draft and the revised version
-2. **Master Reviewer scores both** across all applicable dimensions (0–10 each)
-3. **Computes an overall score** (0–100) and identifies the delta between versions
-4. **Selects 3 priorities** using an effort/impact matrix — what to fix first, and what to park for later
-5. **Writes concrete rewrites** using the PMM's own text for every dimension
-6. **Updates the PMM profile** with scores, patterns, and campaign data
-
-### Scoring Scale
+Each scored **0–10** against a **4-band rubric** with specific criteria per band:
 
 | Score | Band | Meaning |
 |-------|------|---------|
@@ -44,103 +64,23 @@ Master Reviewer fixes this by scoring every document iteration across 29 dimensi
 | 7–8 | Proficient | Solid, effective, minor refinements needed |
 | 9–10 | Exceptional | Best-in-class, could be used as a teaching example |
 
-**Overall score** = (sum of Version 2 scores / number of dimensions scored) × 10 → 0–100 scale.
+### Focus 3 — Built for Humans
 
-The denominator varies per review because contextual dimensions are only scored when applicable to the document type.
+29 dimensions are scored for tracking, but **every review surfaces only 3 priorities**:
 
----
+- **2 Quick Wins** — 15–30 minute fixes (swap weak verbs, cut filler, add one proof point)
+- **1 Deeper Work** — 1–2 hour investment that builds a real skill
 
-## 29 Dimensions in 5 Categories
+Everything else is explicitly **parked** — named, scored, acknowledged, and set aside.
 
-### A. Strategic Foundation (6 dimensions)
-| Dimension | What It Measures | Type |
-|-----------|-----------------|------|
-| Messaging Clarity | Is the core message clear and repeatable? | Core |
-| Value Proposition | Is the value differentiated and tied to customer pain? | Core |
-| Audience Targeting | Is the language tailored to the specific persona? | Core |
-| Competitive Positioning | Does it differentiate with evidence? | Contextual |
-| CTA Effectiveness | Is the next step clear and compelling? | Contextual |
-| Evidence & Proof Points | Are claims backed by data and proof? | Core |
-
-### B. Copywriting Craft (10 dimensions) — *inspired by Gary Provost's "Write Music" principle*
-| Dimension | What It Measures | Type |
-|-----------|-----------------|------|
-| Headline & Hook Quality | Does the opening grab and hold attention? | Contextual |
-| Word Economy | Is the writing tight? Could it say the same in fewer words? | Core |
-| Specificity vs. Vagueness | Concrete details or abstract generalities? | Core |
-| Sentence Rhythm & Musicality | Does sentence length vary to create music? (Provost principle) | Core |
-| Repetition & Parallel Structure | Is repetition intentional and rhetorical, or lazy? | Core |
-| Power Language & Verb Strength | Strong active verbs or weak passive constructions? | Core |
-| Sensory & Vivid Language | Does it paint pictures with concrete imagery and fresh analogies? | Contextual |
-| Emotional Resonance | Does it connect with the reader's experience? | Contextual |
-| Opening & Closing Craft | Does the opening create a loop the closing resolves? | Contextual |
-| Readability | Is it easy to read for the target audience? | Core |
-
-### C. Structure & Logic (4 dimensions)
-| Dimension | What It Measures | Type |
-|-----------|-----------------|------|
-| Information Hierarchy | Is the most important info presented first? | Core |
-| Argument Structure | Is there a clear claim → evidence → conclusion flow? | Core |
-| Transition Quality | Do sections flow naturally into each other? | Core |
-| Scannability | Can a reader skim and get the key points? | Contextual |
-
-### D. Persuasion & Conversion (5 dimensions)
-| Dimension | What It Measures | Type |
-|-----------|-----------------|------|
-| Social Proof | Are testimonials and case studies placed effectively? | Contextual |
-| Benefit vs. Feature Ratio | Does it lead with outcomes, not capabilities? | Core |
-| Objection Handling | Are likely concerns anticipated and addressed? | Contextual |
-| Urgency & Trust Signals | Does it create appropriate urgency and build trust? | Contextual |
-| Technical Simplification | Are complex ideas made accessible? | Contextual |
-
-### E. Brand & Voice (4 dimensions)
-| Dimension | What It Measures | Type |
-|-----------|-----------------|------|
-| Tone Consistency | Is the tone maintained throughout? | Core |
-| Brand Voice Distinctiveness | Does it sound like this brand, or could it be anyone? | Core |
-| Confidence Calibration | Neither overclaiming nor hedge-heavy? | Core |
-| Jargon Appropriateness | Is vocabulary calibrated to the audience? | Contextual |
-
-**17 Core** dimensions are always scored. **12 Contextual** dimensions are scored when applicable based on document type.
-
----
-
-## Supported Document Types
-
-| Type | Key | Typical Contextual Dims |
-|------|-----|------------------------|
-| Messaging Document | `messaging_doc` | Competitive Positioning, Scannability |
-| Positioning Brief | `positioning` | Competitive Positioning, Evidence |
-| Marketing Copy | `copy` | Headline & Hook, Sensory Language, Emotional Resonance, Opening & Closing |
-| Launch Brief | `launch_brief` | CTA, Social Proof, Urgency & Trust |
-| Blog Post | `blog` | Headline & Hook, Emotional Resonance, Opening & Closing, Readability |
-| Case Study | `case_study` | Social Proof, Evidence, Technical Simplification |
-| Email | `email` | Headline & Hook, CTA, Urgency & Trust |
-| Landing Page | `landing_page` | All contextual dims typically apply |
-
-The exact applicability matrix is in `templates/scoring-rubric.md` — you can customize it for your team.
-
----
-
-## The Focus 3 — Built for Humans, Not Robots
-
-29 dimensions are scored for tracking, but **every review surfaces only 3 priorities** — ranked by effort vs. impact:
-
-- **2 Quick Wins**: Things the PMM can fix in 15–30 minutes (swap weak verbs, cut filler, add one proof point)
-- **1 Medium/Deeper Lift**: A section-level improvement that moves the needle
-
-Everything else is explicitly **"Parked for Later"** — giving the PMM permission to NOT worry about those dimensions yet.
-
-### Priority logic
-
-- Strategy problems (Category A) are always fixed before craft problems (Category B) — fix *what* you're saying before *how* you're saying it
+**Priority logic:**
+- Strategy problems (Cat A) always fixed before craft problems (Cat B)
 - High-impact, low-effort fixes come first
-- If the PMM has active improvement goals, at least 1 Focus 3 item aligns with them
-- If the same feedback has been given 3 times without improvement, the system flags the coaching method, not the PMM
+- If same feedback given 3x without improvement → flags the coaching method, not the PMM
 
-### Every feedback note includes a rewrite example
+### Rewrites, Not Advice
 
-Master Reviewer doesn't just say "improve specificity" — it shows you exactly what better looks like using *your own text*:
+Every feedback note includes a concrete rewrite using the PMM's own text:
 
 ```
 Their line:    "Our solution helps companies improve their operations."
@@ -148,165 +88,152 @@ Could become:  "Ramp cut pipeline incidents by 73% in 90 days."
 Why it works:  Replaces vague benefit with a specific customer outcome and timeframe.
 ```
 
-This makes feedback immediately actionable — the PMM can see the technique applied to their own work.
-
----
-
-## How Tracking Works
-
-### Within a Campaign (Multiple Iterations)
-
-A single project goes through multiple rounds of feedback:
+### Multi-Iteration Campaign Tracking
 
 ```
 Campaign: "q3-launch-messaging"
 
- Draft 1 → Draft 2     (Iteration 1 — after manager feedback)
-           Draft 2 → Draft 3     (Iteration 2 — after peer review)
-                      Draft 3 → Final    (Iteration 3 — after copy editing)
+Draft 1 → Draft 2     (Iteration 1 — after manager feedback)
+          Draft 2 → Draft 3     (Iteration 2 — after peer review)
+                     Draft 3 → Final    (Iteration 3 — final polish)
 ```
 
-Each iteration is scored independently. The system tracks:
-- **Score arc**: How the overall score improves across iterations
-- **Feedback retention**: Did the PMM address the coaching notes from the prior iteration? (Yes / Partial / No for each item, with evidence)
-- **Which dimensions plateau**: Some improve early, others need sustained effort
+Each iteration scored independently. The system runs a **feedback retention check** — did coaching from iteration N show up in iteration N+1? (Yes / Partial / No, with evidence.)
 
-### Across Campaigns (Long-Term Growth)
+### Cross-Campaign Growth Tracking
 
-Over months, a PMM works on multiple projects:
+Over months and multiple campaigns, the system tracks:
 
-```
-Campaign A (messaging doc)     Draft 1 avg: 3.2  → Final: 74/100
-Campaign B (launch brief)      Draft 1 avg: 4.8  → Final: 81/100
-Campaign C (blog post)         Draft 1 avg: 5.9  → Final: 86/100
-```
+- **Draft quality progression** — are first-draft scores improving? (the real signal of internalized learning)
+- **Feedback retention rates** — percentage of coaching that sticks
+- **Dimension trajectories** — which skills trending up, flat, or regressing
+- **Persistent gap flags** — same feedback 3x without improvement triggers a coaching method review
 
-The system tracks:
-- **Draft quality progression**: Are initial drafts getting better? (This means feedback is being internalized, not just applied reactively)
-- **Dimension trajectories**: Which dimensions are consistently improving in final work?
-- **Persistent feedback gaps**: Coaching notes given repeatedly but never addressed
-- **Draft-stage strengths**: Dimensions where even first drafts score 6+ (skill is internalized)
+### Reporting Suite
 
-### Improvement Tracks
+| Report | What It Shows |
+|--------|---------------|
+| **Individual** | Score trends, category analysis, patterns, active improvement tracks |
+| **Promotion** | Growth trajectory, draft quality progression, feedback retention — quantified evidence for appraisals |
+| **Learning** | Whether feedback is being internalized vs. applied reactively |
+| **Team** | Dimension heatmap, team-wide gaps, standouts for peer mentoring |
+| **Comparison** | Side-by-side dimension scores for any two PMMs |
 
-Managers set specific goals tied to dimensions:
+### Self-Improving System
 
-```
-Dimension: tone_consistency
-Goal: "Develop distinctive brand voice"
-Baseline: 4.0  |  Current: 6.5  |  Target: 8.0
-Campaign Evidence: Campaign A: 6.0, Campaign B: 6.5
-Status: Active
-```
+The system watches itself and adapts:
 
-Progress updates automatically as new reviews come in.
+1. **Observe** — After every review, logs quality signals (rubric ambiguity, scoring miscalibration, generic rewrites, unclear Focus 3 selection)
+2. **Inspect** — When 3+ observations flag the same issue, analyzes the pattern
+3. **Amend** — Proposes targeted changes to the rubric, feedback framing, or applicability matrix
+4. **Version** — All amendments versioned in `_versions/` — nothing permanently lost
+
+**Primary metric:** Feedback retention rate (target >60%). If PMMs aren't retaining coaching, the system assumes the problem is its own approach.
+
+---
+
+## Supported Document Types
+
+| Type | Key | Typical Contextual Dimensions |
+|------|-----|-------------------------------|
+| Messaging Document | `messaging_doc` | Competitive Positioning, Scannability |
+| Positioning Brief | `positioning` | Competitive Positioning, Evidence |
+| Marketing Copy | `copy` | Headline & Hook, Sensory Language, Emotional Resonance, Opening & Closing |
+| Launch Brief | `launch_brief` | CTA, Social Proof, Urgency & Trust |
+| Blog Post | `blog` | Headline & Hook, Emotional Resonance, Opening & Closing, Readability |
+| Case Study | `case_study` | Social Proof, Evidence, Technical Simplification |
+| Email | `email` | Headline & Hook, CTA, Urgency & Trust |
+| Landing Page | `landing_page` | All contextual dimensions typically apply |
 
 ---
 
 ## Quick Start
 
-1. **Clone this repo**
-   ```bash
-   git clone https://github.com/yourusername/master-reviewer.git
-   cd master-reviewer
-   ```
+```bash
+# 1. Clone the repo
+git clone https://github.com/raven-sourav/PMM-Improvement-Coaching-Model.git
+cd PMM-Improvement-Coaching-Model
 
-2. **Open with Claude Code**
-   ```bash
-   claude
-   ```
+# 2. Open with Claude Code
+claude
 
-3. **Register a PMM**
-   ```
-   > Add a PMM: Sarah Chen, sarah@company.com, team "Growth Marketing"
-   ```
+# 3. Register a PMM
+> Add a PMM: Sarah Chen, sarah@company.com, team "Growth Marketing"
 
-4. **Submit a review**
-   ```
-   > Review these docs for Sarah. Campaign: q3-launch-messaging, type: messaging_doc
-   > Here's Draft 1: [paste or file path]
-   > And here's Draft 2 after manager feedback: [paste or file path]
-   ```
+# 4. Submit a review
+> Review these docs for Sarah. Campaign: q3-launch-messaging, type: messaging_doc
+> Here's Draft 1: [paste or file path]
+> And here's Draft 2: [paste or file path]
 
-5. **Continue iterating**
-   ```
-   > Now review iteration 2 of the same campaign for Sarah
-   > Here's Draft 2: [paste] and Draft 3: [paste]
-   ```
+# 5. Continue iterating
+> Now review iteration 2 of the same campaign for Sarah
 
-6. **Track progress**
-   ```
-   > Show campaign q3-launch-messaging for Sarah
-   > Show patterns for Sarah
-   > Promotion report for Sarah
-   > Learning report for Sarah
-   > Team report
-   ```
+# 6. Track progress
+> Show patterns for Sarah
+> Promotion report for Sarah
+> Team report
+
+# 7. Generate dashboard
+> Generate dashboard
+```
 
 ## All Workflows
 
-| What to say | What happens |
-|-------------|--------------|
-| "Add a PMM" | Registers a PMM with name, email, team |
-| "Review these docs for [PMM]" | Scores across 29 dimensions, saves review, updates profile |
-| "Show campaign [id] for [PMM]" | Full iteration arc with feedback retention chain |
-| "Show patterns for [PMM]" | Strengths, weaknesses, growth areas, draft-stage strengths |
-| "Set a goal for [PMM]" | Creates an improvement track with baseline and target |
-| "Report on [PMM]" | Full coaching report with score trends |
-| "Promotion report for [PMM]" | Quantified growth portfolio for appraisals |
-| "Learning report for [PMM]" | Is feedback being internalized? Draft quality trends |
-| "Team report" | Cross-PMM dimension heatmap, gaps, standouts |
-| "Compare [PMM1] and [PMM2]" | Side-by-side dimension comparison |
-| "Refresh patterns for [PMM]" | Recompute all patterns from review history |
-| "Generate dashboard" | Builds a visual HTML dashboard from all data |
-
----
-
-## Dashboard
-
-Master Reviewer includes a visual dashboard for managers and PMMs to review progress without reading raw markdown files.
-
-```bash
-# Generate the dashboard (run after adding new reviews)
-python3 dashboard/generate.py
-
-# Opens automatically, or open manually
-open dashboard/index.html
-```
-
-**What you'll see:**
-
-- **Team Dashboard** — Team-level stats, each person's progress card with a score ring and skill category breakdown, team-wide strengths and growth areas, recent review activity
-- **Team Skills Map** — Color-coded grid of every team member × every skill. Spot who's strong where, and where the whole team needs coaching
-- **Individual view** — Click any person to see their radar chart (draft vs. final), strongest and weakest skills, biggest improvements, project history, patterns, and their current "What to Work on Next" priorities
-
-The dashboard is a single self-contained HTML file — no server, no dependencies, no internet required. It reads from the same markdown files everything else uses.
+| Command | What Happens |
+|---------|--------------|
+| `Add a PMM` | Registers a PMM with name, email, team |
+| `Review these docs for [PMM]` | Scores across 29 dimensions, saves review, updates profile |
+| `Show campaign [id] for [PMM]` | Full iteration arc with feedback retention chain |
+| `Show patterns for [PMM]` | Strengths, weaknesses, growth areas, draft-stage strengths |
+| `Set a goal for [PMM]` | Creates an improvement track with baseline and target |
+| `Report on [PMM]` | Full coaching report with score trends |
+| `Promotion report for [PMM]` | Quantified growth portfolio for appraisals |
+| `Learning report for [PMM]` | Feedback internalization analysis |
+| `Team report` | Cross-PMM dimension heatmap, gaps, standouts |
+| `Compare [PMM1] and [PMM2]` | Side-by-side dimension comparison |
+| `Refresh patterns for [PMM]` | Recompute all patterns from review history |
+| `Generate dashboard` | Builds visual HTML dashboard from all data |
 
 ---
 
 ## Project Structure
 
 ```
-├── CLAUDE.md              ← Agent instructions (the brain)
-├── templates/             ← Scoring rubrics and file templates
-│   ├── scoring-rubric.md  ← 29 dimensions with 4-band rubrics + applicability matrix
-│   ├── review-template.md ← Review output format with feedback retention check
-│   └── pmm-profile.md     ← Profile structure with campaign tracking
-├── dashboard/             ← Visual dashboard
-│   ├── generate.py        ← Parses markdown files, generates index.html
-│   └── index.html         ← Generated dashboard (open in browser, gitignored)
-├── pmms/                  ← PMM profiles (created when you add PMMs)
-├── reviews/               ← Review analyses (created per iteration)
-└── reports/               ← Generated reports
+├── CLAUDE.md                 ← Agent instructions (the brain)
+├── templates/
+│   ├── scoring-rubric.md     ← 29 dimensions with 4-band rubrics + applicability matrix
+│   ├── review-template.md    ← Review output format with feedback retention check
+│   └── pmm-profile.md        ← Profile structure with campaign tracking
+├── dashboard/
+│   ├── generate.py           ← Parses markdown, generates standalone HTML
+│   └── index.html            ← Generated dashboard (open in browser)
+├── skills/
+│   ├── observe/SKILL.md      ← Execution logging (self-improving)
+│   ├── inspect-amend/SKILL.md← System amendment loop
+│   ├── git-pushing/          ← Git commit & push automation
+│   └── _index.md             ← Skill data flow diagram
+├── pmms/                     ← PMM profiles (one per person)
+├── reviews/                  ← Individual review analyses
+├── reports/                  ← Generated reports
+├── brief.html                ← Product brief (visual overview)
+└── test-docs/                ← Sample draft & final for testing
 ```
 
 ## Customization
 
-- **Adjust rubrics**: Edit `templates/scoring-rubric.md` to match your team's standards
-- **Add dimensions**: Add new sections to the rubric and update `CLAUDE.md`
-- **Change applicability**: Modify the applicability matrix for your document types
-- **Adjust weights**: Modify overall score calculation if some categories matter more
-- **Add doc types**: Extend the applicability matrix in the rubric for new document formats
+- **Adjust rubrics** — Edit `templates/scoring-rubric.md` to match your team's standards
+- **Add dimensions** — Add new sections to the rubric and update `CLAUDE.md`
+- **Change applicability** — Modify the applicability matrix for your document types
+- **Add doc types** — Extend the matrix for new document formats
+- **Adjust scoring weights** — Modify overall score calculation if some categories matter more
+
+---
+
+## Built With
+
+- [Claude Code](https://claude.ai/claude-code) — AI agent that powers the entire review, tracking, and reporting system
+- Markdown — All data lives in readable, editable text files
+- Python — Dashboard generation only (standalone HTML output, no server)
 
 ## License
 
