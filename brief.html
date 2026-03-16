@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Reviewer — Product Brief</title>
+<style>
+  @page { margin: 0; size: A4; }
+  :root {
+    --ink: #0f172a;
+    --ink-2: #334155;
+    --ink-3: #64748b;
+    --ink-4: #94a3b8;
+    --bg: #ffffff;
+    --surface: #f8fafc;
+    --border: #e2e8f0;
+    --accent: #6366f1;
+    --accent-light: #e0e7ff;
+    --green: #10b981;
+    --green-light: #d1fae5;
+    --amber: #f59e0b;
+    --amber-light: #fef3c7;
+    --red: #ef4444;
+    --red-light: #fee2e2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 15px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif;
+    color: var(--ink);
+    background: #f1f5f9;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--bg);
+    min-height: 100vh;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    padding: 56px 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(99,102,241,0.2);
+    color: #a5b4fc;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero h1 span { color: #a5b4fc; }
+  .hero p {
+    font-size: 17px;
+    color: #cbd5e1;
+    max-width: 560px;
+    line-height: 1.65;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 36px;
+    position: relative;
+  }
+  .hero-stat {
+    text-align: left;
+  }
+  .hero-stat .hs-value {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #fff;
+  }
+  .hero-stat .hs-label {
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* ── Sections ── */
+  .section {
+    padding: 48px 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .section .subtitle {
+    font-size: 15px;
+    color: var(--ink-3);
+    margin-bottom: 32px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  /* ── Problem / Solution ── */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .problem-card {
+    padding: 28px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+  }
+  .problem-card.problem {
+    background: var(--red-light);
+    border-color: #fecaca;
+  }
+  .problem-card.solution {
+    background: var(--green-light);
+    border-color: #a7f3d0;
+  }
+  .problem-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .problem-card.problem h3 { color: #991b1b; }
+  .problem-card.solution h3 { color: #065f46; }
+  .problem-card ul {
+    list-style: none;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .problem-card li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .problem-card.problem li::before {
+    content: '\00D7';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .problem-card.solution li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* ── How It Works ── */
+  .steps {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 12px rgba(99,102,241,0.25);
+  }
+  .step h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .step p {
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    padding: 0 8px;
+  }
+
+  /* ── 5 Categories ── */
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .cat-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .cat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 20px;
+  }
+  .cat-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+  }
+  .cat-card .cat-q {
+    font-size: 11px;
+    color: var(--ink-3);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .cat-card .cat-count {
+    font-size: 11px;
+    color: var(--ink-4);
+    font-weight: 600;
+  }
+
+  /* ── Focus 3 ── */
+  .focus-demo {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 32px;
+    border: 1px solid var(--border);
+  }
+  .focus-demo h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  .focus-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+  .focus-item:last-child { margin-bottom: 0; }
+  .focus-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .focus-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .focus-content p {
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .focus-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-quick { background: var(--green-light); color: #065f46; }
+  .tag-medium { background: var(--amber-light); color: #92400e; }
+
+  .rewrite-demo {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .rewrite-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .rewrite-before {
+    color: var(--red);
+    text-decoration: line-through;
+    text-decoration-color: rgba(239,68,68,0.3);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .rewrite-after {
+    color: var(--green);
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  .rewrite-why {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--ink-3);
+    font-style: italic;
+    padding-left: 14px;
+    border-left: 2px solid var(--border);
+  }
+
+  /* ── Tracking ── */
+  .tracking-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .track-card {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid var(--border);
+  }
+  .track-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .track-card .track-desc {
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .track-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .track-label { width: 80px; text-align: right; color: var(--ink-3); font-weight: 500; flex-shrink: 0; }
+  .track-bar {
+    flex: 1;
+    height: 20px;
+    background: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .track-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .track-score { width: 40px; font-weight: 700; text-align: right; flex-shrink: 0; }
+
+  .retention-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+    align-items: center;
+  }
+  .retention-label { width: 80px; text-align: right; font-size: 12px; color: var(--ink-3); flex-shrink: 0; }
+  .retention-dots { display: flex; gap: 4px; }
+  .retention-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* ── Dashboard Preview ── */
+  .dashboard-preview {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .dash-mockup {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    height: 320px;
+  }
+  .dash-sidebar-mock {
+    width: 180px;
+    background: #111827;
+    padding: 20px 12px;
+    flex-shrink: 0;
+  }
+  .dsm-brand {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .dsm-sub {
+    font-size: 9px;
+    color: #64748b;
+    margin-bottom: 20px;
+  }
+  .dsm-section {
+    font-size: 8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.8px;
+    font-weight: 600;
+    margin: 12px 0 6px;
+  }
+  .dsm-item {
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dsm-item.active {
+    background: #1f2937;
+    color: #fff;
+  }
+  .dsm-badge {
+    background: rgba(99,102,241,0.25);
+    color: #a5b4fc;
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-size: 9px;
+    font-weight: 600;
+  }
+  .dash-main-mock {
+    flex: 1;
+    padding: 20px 24px;
+    overflow: hidden;
+  }
+  .dmm-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .dmm-sub {
+    font-size: 11px;
+    color: var(--ink-4);
+    margin-bottom: 16px;
+  }
+  .dmm-stats {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .dmm-stat {
+    flex: 1;
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+  }
+  .dmm-stat-label {
+    font-size: 9px;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .dmm-stat-val {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .dmm-cards {
+    display: flex;
+    gap: 12px;
+  }
+  .dmm-card-mock {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .dmm-card-name {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .dmm-card-team {
+    font-size: 9px;
+    color: var(--ink-4);
+    margin-bottom: 8px;
+  }
+  .dmm-cat-bars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+  .dmm-cat-bar {
+    flex: 1;
+    height: 5px;
+    border-radius: 3px;
+  }
+  .dmm-card-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .dmm-card-tag {
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  .dashboard-views {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .dash-view {
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .dash-view h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .dash-view p {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  /* ── For Who ── */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .persona-card {
+    padding: 32px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .persona-card .persona-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .persona-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .persona-card .persona-role {
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+  }
+  .persona-card ul {
+    list-style: none;
+    font-size: 13px;
+  }
+  .persona-card li {
+    padding: 6px 0;
+    padding-left: 22px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .persona-card li:last-child { border-bottom: none; }
+  .persona-card li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── Getting Started ── */
+  .start-steps {
+    display: flex;
+    gap: 20px;
+  }
+  .start-step {
+    flex: 1;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    text-align: center;
+  }
+  .start-step .ss-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 auto 12px;
+  }
+  .start-step h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .start-step p {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+  .start-step code {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--ink);
+    color: #a5b4fc;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'SF Mono', Menlo, monospace;
+    text-align: left;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 36px 56px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer p {
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .footer .footer-tags { display: flex; gap: 8px; }
+  .footer .ft {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; }
+    .section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ▸ Hero -->
+  <div class="hero">
+    <div class="hero-badge">Product Brief</div>
+    <h1>Master Reviewer</h1>
+    <p>An AI coaching tool that scores product marketing documents across 29 writing skills, shows exactly what better looks like, and tracks growth over time. Built with Claude Code. No setup required.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-value">29</div>
+        <div class="hs-label">Writing Skills Scored</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-value">5</div>
+        <div class="hs-label">Skill Categories</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-value">3</div>
+        <div class="hs-label">Priorities per Review</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-value">0</div>
+        <div class="hs-label">Dependencies</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ Problem / Solution -->
+  <div class="section">
+    <div class="section-label">The Gap</div>
+    <h2>Coaching shouldn't depend on memory</h2>
+    <p class="subtitle">Managers review PMM work constantly. But without a system, feedback is inconsistent, growth is invisible, and appraisal season turns into guesswork.</p>
+    <div class="problem-grid">
+      <div class="problem-card problem">
+        <h3>Without Master Reviewer</h3>
+        <ul>
+          <li>Feedback varies by manager mood and workload</li>
+          <li>No record of what was said or whether it was applied</li>
+          <li>"Did they actually improve?" is answered with gut feel</li>
+          <li>Same feedback given repeatedly, nothing changes</li>
+          <li>Promotion cases rely on anecdotes, not evidence</li>
+        </ul>
+      </div>
+      <div class="problem-card solution">
+        <h3>With Master Reviewer</h3>
+        <ul>
+          <li>Every document scored with the same 29-skill rubric</li>
+          <li>Every round of feedback tracked: was it applied?</li>
+          <li>Growth is quantified — from first draft to final, and across projects</li>
+          <li>Persistent gaps are flagged so coaching can change approach</li>
+          <li>Promotion reports backed by data: "improved 4.2 points across 6 projects"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ How It Works -->
+  <div class="section">
+    <div class="section-label">How It Works</div>
+    <h2>From document to coaching insight in minutes</h2>
+    <p class="subtitle">Submit two versions of any PMM document. Master Reviewer does the rest.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Submit Drafts</h4>
+        <p>Paste or point to two versions of a document — the initial draft and the revision</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Get Scored</h4>
+        <p>Both versions scored across all applicable skills (0-10 each), with cited evidence</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>See 3 Priorities</h4>
+        <p>The top 3 things to fix, ranked by effort vs. impact, with rewrite examples</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Track Growth</h4>
+        <p>Profile updated with scores, patterns, and trends that build over time</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ 5 Categories -->
+  <div class="section">
+    <div class="section-label">What Gets Measured</div>
+    <h2>29 skills across 5 categories</h2>
+    <p class="subtitle">17 core skills are always scored. 12 contextual skills are scored when relevant to the document type (e.g., CTAs in emails, not in internal briefs).</p>
+    <div class="categories">
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--accent-light);">&#127919;</div>
+        <h4>Strategic Foundation</h4>
+        <div class="cat-q">"Is the core message right?"</div>
+        <div class="cat-count">6 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:#fce7f3;">&#9997;&#65039;</div>
+        <h4>Copywriting Craft</h4>
+        <div class="cat-q">"Is the writing sharp?"</div>
+        <div class="cat-count">10 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--amber-light);">&#128736;&#65039;</div>
+        <h4>Structure & Logic</h4>
+        <div class="cat-q">"Is it well organized?"</div>
+        <div class="cat-count">4 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--green-light);">&#128176;</div>
+        <h4>Persuasion</h4>
+        <div class="cat-q">"Does it convince?"</div>
+        <div class="cat-count">5 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:#ede9fe;">&#127908;</div>
+        <h4>Brand & Voice</h4>
+        <div class="cat-q">"Does it sound like us?"</div>
+        <div class="cat-count">4 skills</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ Focus 3 -->
+  <div class="section">
+    <div class="section-label">Built for Humans</div>
+    <h2>Every review gives exactly 3 priorities</h2>
+    <p class="subtitle">29 skills are scored for tracking, but people can only absorb 2-3 improvements at a time. Every review selects the 3 highest-impact actions and parks the rest.</p>
+    <div class="focus-demo">
+      <h3>What to Work on Next</h3>
+      <div class="focus-item">
+        <div class="focus-num">1</div>
+        <div class="focus-content">
+          <h4><span class="focus-tag tag-quick">Quick Win</span> Power Language: Replace weak verbs in the value prop</h4>
+          <p>15 minutes &middot; Expected improvement: 5.5 &rarr; ~7.0</p>
+        </div>
+      </div>
+      <div class="focus-item">
+        <div class="focus-num">2</div>
+        <div class="focus-content">
+          <h4><span class="focus-tag tag-quick">Quick Win</span> Specificity: Replace vague claims with numbers</h4>
+          <p>20 minutes &middot; Expected improvement: 5.0 &rarr; ~7.0</p>
+        </div>
+      </div>
+      <div class="focus-item">
+        <div class="focus-num">3</div>
+        <div class="focus-content">
+          <h4><span class="focus-tag tag-medium">Medium Lift</span> Brand Voice: Extend messaging pillar voice to full doc</h4>
+          <p>1 hour &middot; Expected improvement: 5.0 &rarr; ~7.0</p>
+        </div>
+      </div>
+
+      <div class="rewrite-demo">
+        <div class="rewrite-label" style="color:var(--red);">Their line</div>
+        <div class="rewrite-before">"DataSync Pro gives you: Predictable pricing at flat-rate per connector, not per row"</div>
+        <div class="rewrite-label" style="color:var(--green);">Could become</div>
+        <div class="rewrite-after">"Predictable pricing. Pay per connector, not per row. Your bill never surprises you."</div>
+        <div class="rewrite-why">Breaks one dense line into three punchy statements. The verb "pay" is active and direct. "Never surprises you" makes the benefit visceral.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ Tracking -->
+  <div class="section">
+    <div class="section-label">Growth Over Time</div>
+    <h2>Track real improvement, not just scores</h2>
+    <p class="subtitle">Master Reviewer doesn't just score documents — it tracks whether coaching is working and whether skills are being internalized.</p>
+    <div class="tracking-visual">
+      <div class="track-card">
+        <h4>Skill improvement across projects</h4>
+        <div class="track-desc">Are first drafts getting better over time? That's the real signal of learning.</div>
+        <div class="track-bar-row">
+          <div class="track-label">Project 1</div>
+          <div class="track-bar"><div class="track-fill" style="width:32%;background:var(--red);">3.2</div></div>
+          <div class="track-score" style="color:var(--red)">3.2</div>
+        </div>
+        <div class="track-bar-row">
+          <div class="track-label">Project 2</div>
+          <div class="track-bar"><div class="track-fill" style="width:48%;background:var(--amber);">4.8</div></div>
+          <div class="track-score" style="color:var(--amber)">4.8</div>
+        </div>
+        <div class="track-bar-row">
+          <div class="track-label">Project 3</div>
+          <div class="track-bar"><div class="track-fill" style="width:59%;background:var(--green);">5.9</div></div>
+          <div class="track-score" style="color:var(--green)">5.9</div>
+        </div>
+        <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:10px;text-align:center">First-draft quality improving &uarr; Skills are being internalized</div>
+      </div>
+      <div class="track-card">
+        <h4>Was feedback applied?</h4>
+        <div class="track-desc">Each round checks whether prior coaching notes were actually addressed.</div>
+        <div class="retention-row">
+          <div class="retention-label">Round 1</div>
+          <div class="retention-dots">
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+            <div class="retention-dot" style="background:var(--amber)">~</div>
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+            <div class="retention-dot" style="background:var(--red)">&#10005;</div>
+          </div>
+          <div style="font-size:11px;color:var(--ink-3);margin-left:8px">4/5</div>
+        </div>
+        <div class="retention-row">
+          <div class="retention-label">Round 2</div>
+          <div class="retention-dots">
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+          </div>
+          <div style="font-size:11px;color:var(--ink-3);margin-left:8px">3/3</div>
+        </div>
+        <div class="retention-row">
+          <div class="retention-label">Round 3</div>
+          <div class="retention-dots">
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+            <div class="retention-dot" style="background:var(--green)">&#10003;</div>
+          </div>
+          <div style="font-size:11px;color:var(--ink-3);margin-left:8px">2/2</div>
+        </div>
+        <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:10px;text-align:center">90% feedback retention &middot; Coaching is working</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ Dashboard -->
+  <div class="section">
+    <div class="section-label">Visual Dashboard</div>
+    <h2>See everything at a glance</h2>
+    <p class="subtitle">A self-contained HTML dashboard generated from review data. No server needed — just open it in a browser.</p>
+
+    <div class="dashboard-preview">
+      <div class="dash-mockup">
+        <div class="dash-sidebar-mock">
+          <div class="dsm-brand">Master Reviewer</div>
+          <div class="dsm-sub">Writing Quality Tracker</div>
+          <div class="dsm-section">Views</div>
+          <div class="dsm-item active">Team Dashboard</div>
+          <div class="dsm-item">Team Skills Map</div>
+          <div class="dsm-section">Team Members</div>
+          <div class="dsm-item">Alex Chen <span class="dsm-badge">74</span></div>
+          <div class="dsm-item">Priya Sharma <span class="dsm-badge">71</span></div>
+        </div>
+        <div class="dash-main-mock">
+          <div class="dmm-title">Team Dashboard</div>
+          <div class="dmm-sub">See how your product marketing team is performing across reviews</div>
+          <div class="dmm-stats">
+            <div class="dmm-stat">
+              <div class="dmm-stat-label">Team Members</div>
+              <div class="dmm-stat-val">2</div>
+            </div>
+            <div class="dmm-stat">
+              <div class="dmm-stat-label">Reviews Done</div>
+              <div class="dmm-stat-val">2</div>
+            </div>
+            <div class="dmm-stat">
+              <div class="dmm-stat-label">Team Avg Score</div>
+              <div class="dmm-stat-val" style="color:var(--green)">73</div>
+            </div>
+            <div class="dmm-stat">
+              <div class="dmm-stat-label">Avg Improvement</div>
+              <div class="dmm-stat-val" style="color:var(--green)">+3.6</div>
+            </div>
+          </div>
+          <div class="dmm-cards">
+            <div class="dmm-card-mock">
+              <div class="dmm-card-name">Alex Chen</div>
+              <div class="dmm-card-team">Product Marketing</div>
+              <div class="dmm-cat-bars">
+                <div class="dmm-cat-bar" style="background:var(--green)"></div>
+                <div class="dmm-cat-bar" style="background:#e2e8f0"></div>
+                <div class="dmm-cat-bar" style="background:#e2e8f0"></div>
+                <div class="dmm-cat-bar" style="background:var(--amber)"></div>
+                <div class="dmm-cat-bar" style="background:#e2e8f0"></div>
+              </div>
+              <div class="dmm-card-tags">
+                <span class="dmm-card-tag" style="background:var(--green-light);color:#065f46">Audience 8.5</span>
+                <span class="dmm-card-tag" style="background:var(--amber-light);color:#92400e">Voice 6.0</span>
+              </div>
+            </div>
+            <div class="dmm-card-mock">
+              <div class="dmm-card-name">Priya Sharma</div>
+              <div class="dmm-card-team">Product Marketing</div>
+              <div class="dmm-cat-bars">
+                <div class="dmm-cat-bar" style="background:var(--green)"></div>
+                <div class="dmm-cat-bar" style="background:var(--amber)"></div>
+                <div class="dmm-cat-bar" style="background:var(--green)"></div>
+                <div class="dmm-cat-bar" style="background:var(--accent)"></div>
+                <div class="dmm-cat-bar" style="background:var(--accent)"></div>
+              </div>
+              <div class="dmm-card-tags">
+                <span class="dmm-card-tag" style="background:var(--green-light);color:#065f46">Audience 8.5</span>
+                <span class="dmm-card-tag" style="background:var(--red-light);color:#991b1b">Specificity 5.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-views">
+      <div class="dash-view">
+        <h4>Team Dashboard</h4>
+        <p>Progress cards with score rings and skill bars for each person. Team strengths, growth areas, and recent review feed.</p>
+      </div>
+      <div class="dash-view">
+        <h4>Team Skills Map</h4>
+        <p>Color-coded grid: every team member across every skill. Spot patterns instantly — who's strong where, and where the whole team needs coaching.</p>
+      </div>
+      <div class="dash-view">
+        <h4>Individual View</h4>
+        <p>Radar chart, skill bars, improvement charts, project history, coaching priorities, and patterns — all in one place.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ Who It's For -->
+  <div class="section">
+    <div class="section-label">Who It's For</div>
+    <h2>Two audiences, one tool</h2>
+    <div class="persona-grid" style="margin-top: 28px;">
+      <div class="persona-card">
+        <div class="persona-icon">&#128188;</div>
+        <h3>Marketing Managers</h3>
+        <div class="persona-role">Coaching, evaluating, and developing their team</div>
+        <ul>
+          <li>See who needs help and with what specific skill</li>
+          <li>Track whether coaching is working over months</li>
+          <li>Generate promotion cases backed by data</li>
+          <li>Identify team-wide training needs</li>
+          <li>Stop giving the same feedback over and over</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">&#128221;</div>
+        <h3>PMMs</h3>
+        <div class="persona-role">Improving their craft and tracking their growth</div>
+        <ul>
+          <li>Get clear, actionable feedback — not vague "make it better"</li>
+          <li>See exactly what better looks like (rewrites of your own text)</li>
+          <li>Know which 3 things to fix first and what to ignore for now</li>
+          <li>Track your improvement over projects</li>
+          <li>Build a portfolio of measured growth</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ Getting Started -->
+  <div class="section">
+    <div class="section-label">Getting Started</div>
+    <h2>Up and running in under a minute</h2>
+    <div class="start-steps" style="margin-top: 28px;">
+      <div class="start-step">
+        <div class="ss-num">1</div>
+        <h4>Clone & Open</h4>
+        <p>Clone the repo and open it with Claude Code</p>
+        <code>git clone ... && claude</code>
+      </div>
+      <div class="start-step">
+        <div class="ss-num">2</div>
+        <h4>Add Your Team</h4>
+        <p>Register each PMM with a name, email, and team</p>
+        <code>"Add a PMM: Sarah, sarah@co.com"</code>
+      </div>
+      <div class="start-step">
+        <div class="ss-num">3</div>
+        <h4>Review a Document</h4>
+        <p>Paste two versions and get scored in minutes</p>
+        <code>"Review these docs for Sarah"</code>
+      </div>
+      <div class="start-step">
+        <div class="ss-num">4</div>
+        <h4>Open Dashboard</h4>
+        <p>Generate and view the visual dashboard</p>
+        <code>python3 dashboard/generate.py</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▸ Footer -->
+  <div class="footer">
+    <p>Built with Claude Code &middot; No APIs, no databases, no dependencies</p>
+    <div class="footer-tags">
+      <span class="ft">Python</span>
+      <span class="ft">Markdown</span>
+      <span class="ft">HTML</span>
+      <span class="ft">MIT License</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
